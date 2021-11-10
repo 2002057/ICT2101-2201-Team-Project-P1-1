@@ -25,5 +25,5 @@ Group Members:
 - Please do "pip install -r requirements.txt" on your terminal, or else you might have errors when running the application.
 - Documentation for the FLASK CRUD APP can be found [here](https://codeloop.org/flask-crud-application-with-sqlalchemy/).
 
-# Actual Development
-Create your own branch to work on your parts, please don't work on the main branch.
+# Development Workflow
+All features will branch from dev, and each team member could work on the feature assign to them. 
