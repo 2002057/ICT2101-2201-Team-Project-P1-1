@@ -4,3 +4,5 @@
 4.When unit testing is done, commit/push final changes and init pull request to dev
 5.after reviewer aprroval, merge feature branch into dev
 6.Delete feature branch
+7.only do bugfixes & documentation in release branches
+8.use tags to demarcate rel versions in master branch
