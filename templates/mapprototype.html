@@ -1,0 +1,120 @@
+<div class="container">
+  <div class="panel" id="1" value="testpanel">
+    <div class="front" value = "testfront"></div>
+    <div class="back" value = "testback"></div>
+  </div>
+  <div class="panel">
+    <div class="front"></div>
+    <div class="back"></div>
+  </div>
+</div>
+
+
+<style>
+.container{
+	width:1200px;
+  margin:0 auto;  
+}
+.panel{
+    border: 2px solid gray;
+    border-radius: 5px;
+	float: left;
+	width: 200px;
+	height: 200px;
+	position: relative;
+	font-size: .8em;
+	-webkit-perspective: 600px;
+	-moz-perspective: 600px;
+	perspective: 600px;
+
+}
+/* -- make sure to declare a default for every property that you want animated -- */
+/* -- general styles, including Y axis rotation -- */
+.panel .front {
+	float: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 900;
+	width: inherit;
+	height: inherit;
+	background: #a4dce9;
+	text-align: center;
+
+	-webkit-transform: rotateX(0deg) rotateY(0deg);
+	-moz-transform: rotateX(0deg) rotateY(0deg);
+	transform: rotateX(0deg) rotateY(0deg);
+
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	/* -- transition is the magic sauce for animation -- */
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+}
+.panel.flip .front {
+	z-index: 900;
+	border-color: #eee;
+	background: #333;
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+
+.panel .back {
+	float: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 800;
+	width: inherit;
+	height: inherit;
+
+	text-align: center;
+
+	-webkit-transform: rotateY(-180deg);
+	-moz-transform: rotateY(-179deg); /* setting to 180 causes an unnatural-looking half-flip */
+	transform: rotateY(-179deg);
+
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	/* -- transition is the magic sauce for animation -- */
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+}
+
+.panel.flip .back {
+	z-index: 1000;
+	background: #aaa;
+background-color: black;
+	-webkit-transform: rotateX(0deg) rotateY(0deg);
+	-moz-transform: rotateX(0deg) rotateY(0deg);
+	transform: rotateX(0deg) rotateY(0deg);
+}
+
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+<script type="text/javascript">
+$(function(){
+	$('.panel').click(function(){
+		$(this).toggleClass('flip');
+		$(this).attr("value", "changed");
+	});	
+	var objLen = $('.container .panel').length;
+});
+
+function getRandom(len){
+  return Math.floor(Math.random() * len);
+}
+</script>
