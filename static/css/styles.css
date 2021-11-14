@@ -12194,3 +12194,27 @@ textarea.form-control-lg {
   width: 4rem;
   font-size: 2rem;
 }
+
+.level-img{
+  padding-top: 20px;
+  max-width: 75%;
+  height: auto;
+}
+
+.game-level{
+  background-color: #f8f9fa;
+}
+
+.game-level:hover{
+  background-color: #cfe2ff;
+}
+
+.game-level:focus{
+  background-color: #cfe2ff;
+}
+
+.play-btn{
+  margin:auto;
+  display:block;
+}
+
