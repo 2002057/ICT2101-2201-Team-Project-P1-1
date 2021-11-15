@@ -1,4 +1,5 @@
 <div class="container">
+
   <div class="panel" id="1" value="white">
     <div class="white"></div>
     <div class="black"></div>
@@ -23,14 +24,18 @@
     <div class="white"></div>
     <div class="black"></div>
   </div>
+  <div class="panel" id="7" value="white">
+    <div class="white"></div>
+    <div class="black"></div>
+  </div>
 </div>
 <div class ="container">
-<button type="button" id="save">Save</button> 
+	<button type="button" id="save">Save</button> 
 </div>
 <style>
 .container{
 	width:624px;
-	height: auto;
+	height: 208px;
 	margin:35 auto;  
 }
 .panel{
@@ -133,10 +138,19 @@ $(function(){
 		}
 	});	
 	var objLen = $('.container .panel').length;
+	var map = {};
 	$('#save').click(function(){
 		$('.panel').each(function(index){
-			console.log(index+1+":"+$(this).attr("value"));
+			map[index+1] = $(this).attr("value");
 		});
+		$.post(
+			"/receivedata", 
+			{"map": JSON.stringify(map)},
+			function(data){
+				var response = jQuery.parseJSON(data);
+				console.log(response);
+			}
+		);
 	});	
 });
 

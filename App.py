@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
-
+from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
+import json
 app = Flask(__name__, template_folder='templates')
 
 
@@ -7,7 +7,17 @@ app = Flask(__name__, template_folder='templates')
 def Index():
     return render_template("home.html")
 
+@app.route('/mapcreation')
+def mapCreation():
+    return render_template('mapprototype.html')
 
+@app.route('/receivedata', methods=['POST'])
+def receivedata():
+    mapStr = request.form['map']
+    map = json.loads(mapStr)
+    with open("test.txt", "w") as fo:
+        fo.write(mapStr)
+    return json.dumps({'success':True, 'text':'text'}), 200, {'ContentType':'application/json'} 
 
 if __name__ == "__main__":
     app.run(debug=True)
