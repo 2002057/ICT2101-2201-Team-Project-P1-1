@@ -1,40 +1,89 @@
 <div class="container">
 
-  <div class="panel" id="1" value="white">
-    <div class="white"></div>
-    <div class="black"></div>
+  <div class="panel white" id="1">
+	<div class = "inner"></div>
   </div>
-  <div class="panel" id="2" value="white">
-    <div class="white"></div>
-    <div class="black"></div>
+  <div class="panel white" id="2">
   </div>
-  <div class="panel" id="3" value="white">
-    <div class="white"></div>
-    <div class="black"></div>
+  <div class="panel white" id="3">
   </div>
-  <div class="panel" id="4" value="white">
-    <div class="white"></div>
-    <div class="black"></div>
+  <div class="panel white" id="4">
   </div>
-  <div class="panel" id="5" value="white">
-    <div class="white"></div>
-    <div class="black"></div>
+  <div class="panel white" id="5">
   </div>
-  <div class="panel" id="6" value="white">
-    <div class="white"></div>
-    <div class="black"></div>
+  <div class="panel white" id="6">
   </div>
-  <div class="panel" id="7" value="white">
-    <div class="white"></div>
-    <div class="black"></div>
+  <div class="panel white" id="7">
+  </div>
+  <div class="panel white" id="8">
+  </div>
+  <div class="panel white" id="9">
+  </div>
+  <div class="panel white" id="10">
+  </div>
+  <div class="panel white" id="11">
+  </div>
+  <div class="panel white" id="12">
+  </div>
+  <div class="panel white" id="13">
+  </div>
+  <div class="panel white" id="14">
+  </div>
+  <div class="panel white" id="15">
+  </div>
+  <div class="panel white" id="16">
+  </div>
+  <div class="panel white" id="17">
+  </div>
+  <div class="panel white" id="18">
+  </div>
+  <div class="panel white" id="19">
+  </div>
+  <div class="panel white" id="20">
+  </div>
+  <div class="panel white" id="21">
+  </div>
+  <div class="panel white" id="22">
+  </div>
+  <div class="panel white" id="23">
+  </div>
+  <div class="panel white" id="24">
+  </div>
+  <div class="panel white" id="25">
+  </div>
+  <div class="panel white" id="26">
+  </div>
+  <div class="panel white" id="27">
+  </div>
+  <div class="panel white" id="28">
+  </div>
+  <div class="panel white" id="29">
+  </div>
+  <div class="panel white" id="30">
+  </div>
+  <div class="panel white" id="31">
+  </div>
+  <div class="panel white" id="32">
+  </div>
+  <div class="panel white" id="33">
+  </div>
+  <div class="panel white" id="34">
+  </div>
+  <div class="panel white" id="35">
+  </div>
+  <div class="panel white" id="36">
   </div>
 </div>
 <div class ="container">
+	<label for="name">Name:</label>
+	</br>
+	<input type="text" id="name" name="name">
+	</br>
 	<button type="button" id="save">Save</button> 
 </div>
 <style>
 .container{
-	width:624px;
+	width:628px;
 	height: 208px;
 	margin:35 auto;  
 }
@@ -45,84 +94,26 @@
 	width: 100px;
 	height: 100px;
 	position: relative;
-	font-size: .8em;
-	-webkit-perspective: 600px;
-	-moz-perspective: 600px;
-	perspective: 600px;
-
-}
-/* -- make sure to declare a default for every property that you want animated -- */
-/* -- general styles, including Y axis rotation -- */
-.panel .white {
-	float: none;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 900;
-	width: inherit;
-	height: inherit;
-	background: #a4dce9;
 	text-align: center;
-
-	-webkit-transform: rotateX(0deg) rotateY(0deg);
-	-moz-transform: rotateX(0deg) rotateY(0deg);
-	transform: rotateX(0deg) rotateY(0deg);
-
-	-webkit-transform-style: preserve-3d;
-	-moz-transform-style: preserve-3d;
-	transform-style: preserve-3d;
-
-	-webkit-backface-visibility: hidden;
-	-moz-backface-visibility: hidden;
-	backface-visibility: hidden;
-
-	/* -- transition is the magic sauce for animation -- */
-	-webkit-transition: all .4s ease-in-out;
-	transition: all .4s ease-in-out;
-}
-.panel.flip .white {
-	z-index: 900;
-	border-color: #eee;
-	background: #333;
-	-webkit-transform: rotateY(180deg);
-	-moz-transform: rotateY(180deg);
-	transform: rotateY(180deg);
+	display: table-cell;
+	vertical-align: middle;
 }
 
-.panel .black {
-	float: none;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 800;
-	width: inherit;
-	height: inherit;
-
-	text-align: center;
-
-	-webkit-transform: rotateY(-180deg);
-	-moz-transform: rotateY(-179deg); /* setting to 180 causes an unnatural-looking half-flip */
-	transform: rotateY(-179deg);
-
-	-webkit-transform-style: preserve-3d;
-	-moz-transform-style: preserve-3d;
-	transform-style: preserve-3d;
-
-	-webkit-backface-visibility: hidden;
-	-moz-backface-visibility: hidden;
-	backface-visibility: hidden;
-
-	/* -- transition is the magic sauce for animation -- */
-	-webkit-transition: all .4s ease-in-out;
-	transition: all .4s ease-in-out;
+.white{
+	background-color: AliceBlue;
 }
 
-.panel.flip .black {
-	z-index: 1000;
-	background: black;
-	-webkit-transform: rotateX(0deg) rotateY(0deg);
-	-moz-transform: rotateX(0deg) rotateY(0deg);
-	transform: rotateX(0deg) rotateY(0deg);
+.black{
+	background-color: SlateGray;
+}
+
+.start{
+	content: "Start";
+	background-color: yellow;
+}
+
+.end{
+	background-color: green;
 }
 
 </style>
@@ -130,22 +121,36 @@
 <script type="text/javascript">
 $(function(){
 	$('.panel').click(function(){
-		$(this).toggleClass('flip');
-		if ($(this).attr("value") === "white") {
-			$(this).attr("value", "black");
+		var classname = $(this).attr("class")
+		console.log(classname);
+		if (classname.indexOf("white")>=0){
+			$(this).removeClass();
+			$(this).addClass("panel black");
+		} else if (classname.indexOf("black")>=0){
+			$(this).removeClass();
+			$(this).addClass("panel start");
+			$(this).text("start");
+			
+		} else if (classname.indexOf("start")>=0){
+			$(this).removeClass();
+			$(this).addClass("panel end");
+			$(this).text("end");
 		} else {
-			$(this).attr("value", "white")
+			$(this).removeClass();
+			$(this).addClass("panel white");
+			$(this).text("");
 		}
+		
 	});	
 	var objLen = $('.container .panel').length;
 	var map = {};
 	$('#save').click(function(){
 		$('.panel').each(function(index){
-			map[index+1] = $(this).attr("value");
+			map[index+1] = $(this).attr("class").replaceAll('panel ', '');
 		});
 		$.post(
 			"/receivedata", 
-			{"map": JSON.stringify(map)},
+			{"map": JSON.stringify(map),"name":$("input").val()},
 			function(data){
 				var response = jQuery.parseJSON(data);
 				console.log(response);

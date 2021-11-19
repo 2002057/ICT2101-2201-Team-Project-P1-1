@@ -14,8 +14,9 @@ def mapCreation():
 @app.route('/receivedata', methods=['POST'])
 def receivedata():
     mapStr = request.form['map']
+    fileName = request.form['name'] 
     map = json.loads(mapStr)
-    with open("test.txt", "w") as fo:
+    with open(fileName+".txt", "w") as fo:
         fo.write(mapStr)
     return json.dumps({'success':True, 'text':'text'}), 200, {'ContentType':'application/json'} 
 
