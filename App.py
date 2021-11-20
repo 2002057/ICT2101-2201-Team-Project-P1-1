@@ -16,9 +16,14 @@ def receivedata():
     mapStr = request.form['map']
     fileName = request.form['name'] 
     map = json.loads(mapStr)
-    with open(fileName+".txt", "w") as fo:
-        fo.write(mapStr)
-    return json.dumps({'success':True, 'text':'text'}), 200, {'ContentType':'application/json'} 
-
+    if not fileName:
+        print('emptyfilename')
+        return json.dumps({'success':False, 'text':'Challenge not saved'}), 200, {'ContentType':'application/json'} 
+    try:
+        with open("challenges\\"+fileName+".txt", "w") as fo:
+            fo.write(mapStr)
+        return json.dumps({'success':True, 'text':'Challenge saved'}), 200, {'ContentType':'application/json'} 
+    except:
+        return json.dumps({'success':False, 'text':'Challenge not saved'}), 200, {'ContentType':'application/json'} 
 if __name__ == "__main__":
     app.run(debug=True)
