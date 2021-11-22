@@ -1,16 +1,48 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 import json
 app = Flask(__name__, template_folder='templates')
+app.secret_key = 'super secret key'
+app.config['SESSION_TYPE'] = 'filesystem'
 
+import hashlib
 
+#Route to home page
 @app.route('/')
 def Index():
+    session["name"] = "none"
     return render_template("home.html")
 
+#Route to mapcreation.html
 @app.route('/mapcreation')
 def mapCreation():
-    return render_template('mapprototype.html')
+    if session["name"]=="admin":
+        return render_template('mapprototype.html')
+    else:
+        return redirect('/adminlogin')
+#Route to adminlogin.html
+@app.route('/adminlogin')
+def adminLogin():
+    return render_template('adminlogin.html')
 
+#Hash and check password
+#Redirect back to adminlogin if failed
+#Redirect to admin page if success
+@app.route('/adminauth', methods=['POST'])
+def adminAuth():
+    password = request.form['password'].replace('\"','')
+    print(password)
+    pwhash = hashlib.sha256(password.encode('utf-8')).hexdigest()
+    with open('static\\pwhash') as f:
+        lines = f.readlines()
+    result = bool(pwhash == lines[0])
+    if result:
+        session["name"] = "admin"
+        return json.dumps({'success':True, 'text':result}), 200, {'ContentType':'application/json'} 
+    else:
+        session["name"] = "none"
+        return json.dumps({'success':False, 'text':lines[0], 'pwhash':pwhash, 'password':password}), 200, {'ContentType':'application/json'}
+        
+#AJAX Request handling for challenge creation saving
 @app.route('/receivedata', methods=['POST'])
 def receivedata():
     mapStr = request.form['map']
@@ -25,5 +57,8 @@ def receivedata():
         return json.dumps({'success':True, 'text':'Challenge saved'}), 200, {'ContentType':'application/json'} 
     except:
         return json.dumps({'success':False, 'text':'Challenge not saved'}), 200, {'ContentType':'application/json'} 
+        
+
 if __name__ == "__main__":
     app.run(debug=True)
+    
