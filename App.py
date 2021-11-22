@@ -30,7 +30,6 @@ def adminLogin():
 @app.route('/adminauth', methods=['POST'])
 def adminAuth():
     password = request.form['password'].replace('\"','')
-    print(password)
     pwhash = hashlib.sha256(password.encode('utf-8')).hexdigest()
     with open('static\\pwhash') as f:
         lines = f.readlines()
