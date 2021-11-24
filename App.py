@@ -7,6 +7,9 @@ app = Flask(__name__, template_folder='templates')
 def Index():
     return render_template("home.html")
 
+@app.route('/addQueue')
+def addQueue():
+    return render_template('addQueue.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
