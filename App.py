@@ -57,6 +57,10 @@ def receivedata():
     except:
         return json.dumps({'success':False, 'text':'Challenge not saved'}), 200, {'ContentType':'application/json'} 
         
+#Route to instructions page
+@app.route('/instructions')
+def InstructionPage():
+    return render_template("instructions.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
