@@ -62,7 +62,32 @@ def receivedata():
 def InstructionPage():
     if request.method == 'POST':
         img_selected = request.form['selected_level']
-        return render_template("instructions.html",img=img_selected)
+        level_selected = None
+        if img_selected == "/static/images/easy1.png":
+            level_selected = "/preset_maps/easy1.html"
+        elif img_selected == "/static/images/easy2.png":
+            level_selected = "/preset_maps/easy2.html"
+        elif img_selected == "/static/images/easy3.png":
+            level_selected = "/preset_maps/easy3.html"
+        elif img_selected == "/static/images/medium1.png":
+            level_selected = "/preset_maps/medium1.html"
+        elif img_selected == "/static/images/medium2.png":
+            level_selected = "/preset_maps/medium2.html"
+        elif img_selected == "/static/images/medium3.png":
+            level_selected = "/preset_maps/medium3.html"
+        elif img_selected == "/static/images/hard1.png":
+            level_selected = "/preset_maps/hard1.html"
+        elif img_selected == "/static/images/hard2.png":
+            level_selected = "/preset_maps/hard2.html"
+        elif img_selected == "/static/images/hard3.png":
+            level_selected = "/preset_maps/hard3.html"
+        return render_template("instructions.html",img=img_selected, level = level_selected)
+
+@app.route('/play',methods=['POST'])
+def GamePlay():
+    if request.method == 'POST':
+        level_sel = request.form['selected_level']
+        return render_template("gamePlay.html",level = level_sel)
 
 if __name__ == "__main__":
     app.run(debug=True)
