@@ -57,6 +57,12 @@ def receivedata():
     except:
         return json.dumps({'success':False, 'text':'Challenge not saved'}), 200, {'ContentType':'application/json'} 
         
+#Route to instructions page
+@app.route('/instructions',methods=['POST'])
+def InstructionPage():
+    if request.method == 'POST':
+        img_selected = request.form['selected_level']
+        return render_template("instructions.html",img=img_selected)
 
 if __name__ == "__main__":
     app.run(debug=True)
