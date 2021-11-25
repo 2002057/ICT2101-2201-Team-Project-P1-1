@@ -92,8 +92,20 @@
 <script type="text/javascript">
    $(function(){
    	$(':button').click(function(){
-		$(this).attr("id")
-   		
+		var name = $(this).attr("id")
+   		$.post(
+   			"/loadchallenge", 
+   			{"name": name},
+   			function(data){
+   				var response = jQuery.parseJSON(data);
+   				if (response['success']===true){
+   					window.location.replace("http://localhost:5000/mapcreation");
+   				} else {
+   					alert("Challenge loading failed, please refresh the page.");
+   				}
+   				
+   			}
+   		);
    	});	
    });
    

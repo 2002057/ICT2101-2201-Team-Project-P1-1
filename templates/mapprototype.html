@@ -119,6 +119,8 @@
                   <button type="button" id="save">Save</button> 
                </div>
             </div>
+		 <input type="hidden" id="challengename" value={{name}}>
+		 <input type="hidden" id="map" value={{map[0]}}>
          </div>
          </div>
       </section>
@@ -167,6 +169,20 @@
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 <script type="text/javascript">
+	$( document ).ready(function() {
+		$('#name').val($('#challengename').attr("value"));
+		const map = JSON.parse($('#map').attr("value"));
+		$.each( map, function( key, value ) {
+			$('#'.concat(key)).toggleClass('white')
+			$('#'.concat(key)).toggleClass(value)
+			if (value === "start"){
+				$('#'.concat(key)).text("start")
+			}
+			if (value === "end"){
+				$('#'.concat(key)).text("end")
+			}
+		});
+	});
    $(function(){
    	$('.panel').click(function(){
    		var classname = $(this).attr("class")
@@ -201,7 +217,6 @@
    			{"map": JSON.stringify(map),"name":$("input").val()},
    			function(data){
    				var response = jQuery.parseJSON(data);
-   				
    				if (response['success']===true){
    					alert("Challenge saved!");
    					console.log('yay');

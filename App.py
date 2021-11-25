@@ -18,7 +18,15 @@ def Index():
 @app.route('/mapcreation')
 def mapCreation():
     if session["name"]=="admin":
-        return render_template('mapprototype.html')
+        if "filename" not in session.keys():
+            session["filename"] = "create"
+        if session["filename"]=="create":
+            return render_template('mapprototype.html',map='{}',name='')
+        else:
+            map = ''
+            with open(f"challenges\\{session['filename']}.txt") as f:
+                map = f.readlines()
+            return render_template('mapprototype.html',map=map,name=session["filename"])
     else:
         return redirect('/adminlogin')
         
@@ -50,7 +58,7 @@ def adminAuth():
 @app.route('/receivedata', methods=['POST'])
 def saveChallenge():
     mapStr = request.form['map']
-    fileName = request.form['name'] 
+    fileName = request.form['name']
     map = json.loads(mapStr)
     if not fileName:
         print('emptyfilename')
@@ -65,11 +73,23 @@ def saveChallenge():
 # selectChallenge()
 @app.route('/config')
 def selectChallenge():
+    if session["name"]=="admin":
+        files = [splitext(f)[0] for f in listdir("challenges\\") if isfile(join("challenges\\", f))]
+        return render_template('config.html', files=files)
+    else:
+        return redirect('/adminlogin')
 
-    files = [splitext(f)[0] for f in listdir("challenges\\") if isfile(join("challenges\\", f))]
-    return render_template('config.html', files=files)
-    
-
+# loadChallenge()
+@app.route('/loadchallenge', methods=['POST'])
+def loadChallenge():
+    fileName = request.form['name']
+    try:
+        session["filename"] = fileName
+        return json.dumps({'success':True, 'text':'loaded'}), 200, {'ContentType':'application/json'} 
+    except:
+        return json.dumps({'success':False, 'text':'loading failed'}), 200, {'ContentType':'application/json'} 
+        
 if __name__ == "__main__":
+
     app.run(debug=True)
     
