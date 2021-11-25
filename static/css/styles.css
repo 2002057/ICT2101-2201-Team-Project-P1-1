@@ -12201,20 +12201,25 @@ textarea.form-control-lg {
   height: auto;
 }
 
-.game-level{
-  background-color: #f8f9fa;
-}
-
-.game-level:hover{
-  background-color: #cfe2ff;
-}
-
-.game-level:focus{
-  background-color: #cfe2ff;
-}
 
 .play-btn{
   margin:auto;
   display:block;
 }
 
+.selected_level{
+  display: none !important;
+}
+
+label {
+  cursor: pointer;   
+}
+
+input[type=radio]:checked + label>img {
+  border: 1px solid #fff;
+  box-shadow: 0 0 3px 3px #86b7fe;
+}
+
+#instruction_img{
+  padding-bottom: 2rem;
+}

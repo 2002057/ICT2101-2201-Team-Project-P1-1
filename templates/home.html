@@ -41,100 +41,54 @@
                 </div>
             </div>
         </header>
-        <!-- Page Content-->
-		<div id="myModal" class="modal">
-		  <!-- Modal content -->
-		  <div class="modal-content">
-			<span class="close">&times;</span>
-			<p>Some text in the Modal..</p>
-		  </div>
-		</div>			
+        <!-- Page Content-->			
         <section class="pt-4">
             <div class="container px-lg-5">
                 <!-- Page Features-->
+                <form action="{{url_for('InstructionPage')}}" method="POST">
                 <h4>Easy:</h4>
                 <div class="row gx-lg-5">
                     <div class="col-lg-6 col-xxl-4 mb-5">
-                        <button class ="game-level border-0 h-100">
-                            <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
-                                <img id="easy1" class="level-img" src="/static/images/easy1.png"/>                              
-                            </div>
-                        </button>
+                        <input type="radio" name="selected_level" id="easy1" class="selected_level" value="/static/images/easy1.png" required>
+                        <label class="label_img" for="easy1"> <img class="level-img" src="/static/images/easy1.png"> </label>
                     </div>
                     <div class="col-lg-6 col-xxl-4 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <button class ="game-level border-0 h-100">
-                                <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
-                                    <img class="level-img" src="/static/images/easy2.png"/>                              
-                                </div>
-                            </button>
-                        </div>
+                        <input type="radio" name="selected_level" id="easy2" class="selected_level" value="/static/images/easy2.png">
+                        <label class="label_img" for="easy2"> <img class="level-img" src="/static/images/easy2.png"> </label>
                     </div>
                     <div class="col-lg-6 col-xxl-4 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <button class ="game-level border-0 h-100">
-                                <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
-                                    <img class="level-img" src="/static/images/easy3.png"/>                              
-                                </div>
-                            </button>
-                        </div>
+                        <input type="radio" name="selected_level" id="easy3" class="selected_level" value="/static/images/easy3.png">
+                        <label class="label_img" for="easy3"> <img class="level-img" src="/static/images/easy3.png"> </label>
                     </div>
                     <h4>Medium:</h4>
                     <div class="col-lg-6 col-xxl-4 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <button class ="game-level border-0 h-100">
-                                <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
-                                    <img class="level-img" src="/static/images/mid1.png"/>                              
-                                </div>
-                            </button>
-                        </div>
+                        <input type="radio" name="selected_level" id="medium1" class="selected_level" value="/static/images/medium1.png">
+                        <label class="label_img" for="medium1"> <img class="level-img" src="/static/images/medium1.png"> </label>
                     </div>
                     <div class="col-lg-6 col-xxl-4 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <button class ="game-level border-0 h-100">
-                                <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
-                                    <img class="level-img" src="/static/images/mid2.png"/>                              
-                                </div>
-                            </button>
-                        </div>
+                        <input type="radio" name="selected_level" id="medium2" class="selected_level" value="/static/images/medium2.png">
+                        <label class="label_img" for="medium2"> <img class="level-img" src="/static/images/medium2.png"> </label>
                     </div>
                     <div class="col-lg-6 col-xxl-4 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <button class ="game-level border-0 h-100">
-                                <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
-                                    <img class="level-img" src="/static/images/mid3.png"/>                              
-                                </div>
-                            </button>
-                        </div>
+                        <input type="radio" name="selected_level" id="medium3" class="selected_level" value="/static/images/medium3.png">
+                        <label class="label_img" for="medium3"> <img class="level-img" src="/static/images/medium3.png"> </label>
                     </div>
                     <h4>Hard:</h4>
                     <div class="col-lg-6 col-xxl-4 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <button class ="game-level border-0 h-100">
-                                <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
-                                    <img class="level-img" src="/static/images/hard1.png"/>                              
-                                </div>
-                            </button>
-                        </div>
-                    </div><div class="col-lg-6 col-xxl-4 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <button class ="game-level border-0 h-100">
-                                <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
-                                    <img class="level-img" src="/static/images/hard2.png"/>                              
-                                </div>
-                            </button>
-                        </div>
-                    </div><div class="col-lg-6 col-xxl-4 mb-5">
-                        <div class="card bg-light border-0 h-100">
-                            <button class ="game-level border-0 h-100">
-                                <div class="card-body text-center p-4 p-lg-3 pt-0 pt-lg-0">
-                                    <img class="level-img" src="/static/images/hard3.png"/>                              
-                                </div>
-                            </button>
-                        </div>
+                        <input type="radio" name="selected_level" id="hard1" class="selected_level" value="/static/images/hard1.png">
+                        <label class="label_img" for="hard1"> <img class="level-img" src="/static/images/hard1.png"> </label>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <input type="radio" name="selected_level" id="hard2" class="selected_level" value="/static/images/hard2.png">
+                        <label class="label_img" for="hard2"> <img class="level-img" src="/static/images/hard2.png"> </label>
+                    </div>
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <input type="radio" name="selected_level" id="hard3" class="selected_level" value="/static/images/hard3.png">
+                        <label class="label_img" for="hard3"> <img class="level-img" src="/static/images/hard3.png"> </label>
                     </div>
                 </div>
-                <button id="play-btn" class="play-btn btn-primary btn-lg mb-5" >Play</button>
+                <button type="submit" id="play-btn" class="play-btn btn-primary btn-lg mb-5" >Play</button>
+                </form>
             </div>
         </section>
         <!-- Footer-->
