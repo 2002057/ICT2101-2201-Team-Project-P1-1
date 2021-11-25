@@ -1,12 +1,28 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
-
+from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
+import json
 app = Flask(__name__, template_folder='templates')
+app.secret_key = 'super secret key'
+app.config['SESSION_TYPE'] = 'filesystem'
 
+import hashlib
 
+#Route to home page
 @app.route('/')
 def Index():
+    session["name"] = "none"
     return render_template("home.html")
 
+#Route to mapcreation.html
+@app.route('/mapcreation')
+def mapCreation():
+    if session["name"]=="admin":
+        return render_template('mapprototype.html')
+    else:
+        return redirect('/adminlogin')
+#Route to adminlogin.html
+@app.route('/adminlogin')
+def adminLogin():
+    return render_template('adminlogin.html')
 
 #Hash and check password
 #Redirect back to adminlogin if failed
@@ -48,3 +64,4 @@ def InstructionPage():
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
