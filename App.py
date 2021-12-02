@@ -18,7 +18,7 @@ def connection():
     serialInst = serial.Serial("COM4",9600,parity=serial.PARITY_ODD,stopbits = STOPBITS_ONE)
     return serialInst
 
-#function to send instruction to the robotic car
+#function to send instruction to the robotic
 def sendInstruction(serialInst,data):
     while not serialInst.isOpen():
         serialInst = connection() 
@@ -102,31 +102,33 @@ def InstructionPage():
             level_selected = "/preset_maps/hard3.html"
         return render_template("instructions.html",img=img_selected, level = level_selected)
 
-@app.route('/play',methods=['POST'])
+@app.route('/play',methods=['GET','POST'])
 def GamePlay():
     if request.method == 'POST':
         level_sel = request.form['selected_level']
-        serialInst = serial.Serial("COM4",9600,parity=serial.PARITY_ODD,stopbits = STOPBITS_ONE)
-        while not serialInst.isOpen():
-            serialInst = connection() 
-        data = request.form.getlist("on")
-        data = ' '.join([str(data1) for data1 in data])
-        print(data)
-        if str(data) == "turn on led":
-            sendInstruction(serialInst,str(1))
-        if str(data) == "turn off led":
-            sendInstruction(serialInst,str(0))
-        if str(data) == "move forward":
-            sendInstruction(serialInst,"w")
-        if str(data) == "brake":
-            sendInstruction(serialInst,"s")
-        if str(data) == "A brake":
-            sendInstruction(serialInst,"a")
-        if str(data) == "B brake":
-            sendInstruction(serialInst,"d")
-        if str(data) == "reverse":
-            sendInstruction(serialInst,"x")
+        # serialInst = serial.Serial("COM4",9600,parity=serial.PARITY_ODD,stopbits = STOPBITS_ONE)
+        # while not serialInst.isOpen():
+        #     serialInst = connection() 
+        # data = request.form.getlist("on")
+        # data = ' '.join([str(data1) for data1 in data])
+        # print(data)
+        # if str(data) == "turn on led":
+        #     sendInstruction(serialInst,str(1))
+        # if str(data) == "turn off led":
+        #     sendInstruction(serialInst,str(0))
+        # if str(data) == "move forward":
+        #     sendInstruction(serialInst,"w")
+        # if str(data) == "brake":
+        #     sendInstruction(serialInst,"s")
+        # if str(data) == "A brake":
+        #     sendInstruction(serialInst,"a")
+        # if str(data) == "B brake":
+        #     sendInstruction(serialInst,"d")
+        # if str(data) == "reverse":
+        #     sendInstruction(serialInst,"x")
         return render_template("gamePlay.html",level = level_sel)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
