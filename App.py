@@ -106,28 +106,64 @@ def InstructionPage():
 def GamePlay():
     if request.method == 'POST':
         level_sel = request.form['selected_level']
-        # serialInst = serial.Serial("COM4",9600,parity=serial.PARITY_ODD,stopbits = STOPBITS_ONE)
-        # while not serialInst.isOpen():
-        #     serialInst = connection() 
-        # data = request.form.getlist("on")
-        # data = ' '.join([str(data1) for data1 in data])
-        # print(data)
-        # if str(data) == "turn on led":
-        #     sendInstruction(serialInst,str(1))
-        # if str(data) == "turn off led":
-        #     sendInstruction(serialInst,str(0))
-        # if str(data) == "move forward":
-        #     sendInstruction(serialInst,"w")
-        # if str(data) == "brake":
-        #     sendInstruction(serialInst,"s")
-        # if str(data) == "A brake":
-        #     sendInstruction(serialInst,"a")
-        # if str(data) == "B brake":
-        #     sendInstruction(serialInst,"d")
-        # if str(data) == "reverse":
-        #     sendInstruction(serialInst,"x")
+       
         return render_template("gamePlay.html",level = level_sel)
+        # return render_template("gamePlay.html")
+    
+@app.route('/forward')
+def forward():
+    forward = request.args.get('forward')
+    print(forward)
+    serialInst = serial.Serial("COM4",9600,parity=serial.PARITY_ODD,stopbits = STOPBITS_ONE)
+    while not serialInst.isOpen():
+        serialInst = connection() 
+    if forward == "w":
+        sendInstruction(serialInst,"w")
+    return ('nothing')
 
+@app.route('/left')
+def left():
+    left = request.args.get('left')
+    print(left)
+    serialInst = serial.Serial("COM4",9600,parity=serial.PARITY_ODD,stopbits = STOPBITS_ONE)
+    while not serialInst.isOpen():
+        serialInst = connection() 
+    if left == "a":
+        sendInstruction(serialInst,"a")
+    return ('nothing')
+
+@app.route('/right')
+def right():
+    right = request.args.get('right')
+    print(right)
+    serialInst = serial.Serial("COM4",9600,parity=serial.PARITY_ODD,stopbits = STOPBITS_ONE)
+    while not serialInst.isOpen():
+        serialInst = connection() 
+    if right == "d":
+        sendInstruction(serialInst,"d")
+    return ('nothing')
+
+@app.route('/back')
+def back():
+    back = request.args.get('back')
+    print(back)
+    serialInst = serial.Serial("COM4",9600,parity=serial.PARITY_ODD,stopbits = STOPBITS_ONE)
+    while not serialInst.isOpen():
+        serialInst = connection() 
+    if back == "x":
+        sendInstruction(serialInst,"x")
+    return ('nothing')
+
+@app.route('/stop')
+def stop():
+    stop = request.args.get('stop')
+    print(stop)
+    serialInst = serial.Serial("COM4",9600,parity=serial.PARITY_ODD,stopbits = STOPBITS_ONE)
+    while not serialInst.isOpen():
+        serialInst = connection() 
+    if stop == "s":
+        sendInstruction(serialInst,"s")
+    return ('nothing')
 
 
 if __name__ == "__main__":

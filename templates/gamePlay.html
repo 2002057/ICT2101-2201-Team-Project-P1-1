@@ -39,26 +39,22 @@
                     <div class="col-sm">
                         {% include level %}
                     </div>
-                    <div class="col-sm">
-                        <form action="/play" method="POST">      
-                            <label for="on">
-                                <input class="btn btn-success" name="on" type="submit" value="move forward">
-                                <input class="btn btn-success" name="on" type="submit" value="brake">
-                                <input class="btn btn-success" name="on" type="submit" value="A brake">
-                                <input class="btn btn-success" name="on" type="submit" value="B brake">
-                                <input class="btn btn-success" name="on" type="submit" value="reverse">
-                            </label>
-                        </form>
+                    <div class="col-sm">   
+                            <a id="forward" class="btn btn-primary">forward</a>
+                            <a id="left" class="btn btn-primary">move left</a>
+                            <a id="right" class="btn btn-primary">move right</a>
+                            <a id="backward" class="btn btn-primary">backward</a>
+                            <a id="stop" class="btn btn-danger">stop</a>
                     </div>
                 </div>
                
             </div>
-            <div class="container pb-3">
-               <button id="forward" class="btn btn-primary btn-lg"><i class="fas fa-arrow-right"></i></button>
+            <!-- <div class="container pb-3">
+               <button id="forward" class="btn btn-primary btn-lg" ><i class="fas fa-arrow-right"></i></button>
                <button id="backward" class="btn btn-primary btn-lg"><i class="fas fa-arrow-left"></i></button>
                <button id="left" class="btn btn-primary btn-lg"><i class="fas fa-arrow-up"></i></button>
                <button id="right" class="btn btn-primary btn-lg"><i class="fas fa-arrow-down"></i></button>
-            </div>
+            </div> -->
            
          </section>
 
@@ -68,4 +64,88 @@
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
         </footer>
     </body>
+
+
 </html>
+
+<script>
+    var forward = "w";
+    let runForward = document.getElementById('forward');
+    runForward.addEventListener('click',function() {
+        // event.preventDefault();
+        $.ajax({
+          url: "/forward",
+          type: "get",
+          data: {forward: forward},
+          success: function(response) {
+            var new_html = response.html;
+          },
+        });
+    })
+</script>
+
+
+<script>
+    var left = "a";
+    let runleft = document.getElementById('left');
+    runleft.addEventListener('click',function() {
+        // event.preventDefault();
+        $.ajax({
+          url: "/left",
+          type: "get",
+          data: {left: left},
+          success: function(response) {
+            var new_html = response.html;
+          },
+        });
+    })
+</script>
+
+<script>
+    var right = "d";
+    let runBackward = document.getElementById('right');
+    runBackward.addEventListener('click',function() {
+        $.ajax({
+          url: "/right",
+          type: "get",
+          data: {right: right},
+          success: function(response) {
+            var new_html = response.html;
+          },
+        });
+    })
+</script>
+
+<script>
+    var stop = "s";
+    let stopcar = document.getElementById('stop');
+    stopcar.addEventListener('click',function() {
+        // event.preventDefault();
+        $.ajax({
+          url: "/stop",
+          type: "get",
+          data: {stop: stop},
+          success: function(response) {
+            var new_html = response.html;
+          },
+        });
+    })
+</script>
+
+
+<script>
+    var back = "x";
+    let runback = document.getElementById('backward');
+    runback.addEventListener('click',function() {
+        // event.preventDefault();
+        $.ajax({
+          url: "/back",
+          type: "get",
+          data: {back: back},
+          success: function(response) {
+            var new_html = response.html;
+          },
+        });
+    })
+</script>
+
