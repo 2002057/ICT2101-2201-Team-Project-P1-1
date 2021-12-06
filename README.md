@@ -77,7 +77,7 @@ For whitebox testing, we wrote tests for def adminAuth() and def receivedata(). 
 In order for test to run, the application iself must also be running as instructed in "Getting Started"</br>
 While in the /tests directory, run 
     ```
-    python -m pytest
+    python -m pytest tests.py
     ```
 ### Statement coverage 
 
