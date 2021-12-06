@@ -42,7 +42,7 @@ Create feature branch
 
 Commit often during development
     ```
-    git checkout -b feature/myfeature dev
+    git commit -m "commit message"
     ```
 
 Push changes to GitHub from local repo copy
