@@ -73,3 +73,93 @@ When feature is complete, send a pull request to dev and merge accordingly. Plea
 
 
 # Whitebox Testing
+For whitebox testing, we wrote tests for def adminAuth() and def receivedata(). These two functions are used for authentication and challenge saving respectively. tests can be found in /tests.
+While in the /tests directory, run 
+    ```
+    python -m pytest
+    ```
+### Statement coverage 
+
+O - Covered
+X - Not Covered
+
+##### def adminAuth(): 1/1
+
+###### test_adminAuth_success(): 8/11
+
+```
+def adminAuth():
+O    password = request.form['password'].replace('\"','')
+O    pwhash = hashlib.sha256(password.encode('utf-8')).hexdigest()
+O    with open('static\\pwhash') as f:
+O        lines = f.readlines()
+O    result = bool(pwhash == lines[0])
+O    if result:
+O        session["name"] = "admin"
+O        return json.dumps({'success':True, 'text':result}), 200, {'ContentType':'application/json'} 
+X    else:
+X        session["name"] = "none"
+X        return json.dumps({'success':False, 'text':lines[0], 'pwhash':pwhash, 'password':password}), 200, {'ContentType':'application/json'}
+
+```
+
+###### test_adminAuth_fail(): 9/11
+
+```
+def adminAuth():
+O    password = request.form['password'].replace('\"','')
+O    pwhash = hashlib.sha256(password.encode('utf-8')).hexdigest()
+O    with open('static\\pwhash') as f:
+O        lines = f.readlines()
+O    result = bool(pwhash == lines[0])
+O    if result:
+X        session["name"] = "admin"
+X        return json.dumps({'success':True, 'text':result}), 200, {'ContentType':'application/json'} 
+O    else:
+O        session["name"] = "none"
+O        return json.dumps({'success':False, 'text':lines[0], 'pwhash':pwhash, 'password':password}), 200, {'ContentType':'application/json'} 
+
+```
+
+##### def receivedata(): 10/12
+
+###### test_adminAuth_success(): 7/12
+
+```
+def receivedata():
+O    mapStr = request.form['map']
+O    fileName = request.form['name'] 
+O    map = json.loads(mapStr)
+X    if not fileName:
+X        print('emptyfilename')
+X        return json.dumps({'success':False, 'text':'Challenge not saved'}), 200, {'ContentType':'application/json'} 
+O    try:
+O        with open("challenges\\"+fileName+".txt", "w") as fo:
+O            fo.write(mapStr)
+O        return json.dumps({'success':True, 'text':'Challenge saved'}), 200, {'ContentType':'application/json'} 
+X    except:
+X        return json.dumps({'success':False, 'text':'Challenge not saved'}), 200, {'ContentType':'application/json'}     
+
+```
+
+###### test_adminAuth_fail(): 6/12
+
+```
+def receivedata():
+#O    mapStr = request.form['map']
+#O    fileName = request.form['name'] 
+#O    map = json.loads(mapStr)
+#O    if not fileName:
+#O        print('emptyfilename')
+#O        return json.dumps({'success':False, 'text':'Challenge not saved'}), 200, {'ContentType':'application/json'} 
+#X    try:
+#X        with open("challenges\\"+fileName+".txt", "w") as fo:
+#X            fo.write(mapStr)
+#X        return json.dumps({'success':True, 'text':'Challenge saved'}), 200, {'ContentType':'application/json'} 
+#X    except:
+#X        return json.dumps({'success':False, 'text':'Challenge not saved'}), 200, {'ContentType':'application/json'}
+
+```
+
+
+
