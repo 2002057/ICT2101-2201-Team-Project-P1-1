@@ -80,7 +80,7 @@ While in the /tests directory, run
     ```
 ### Statement coverage 
 
-O - Covered
+O - Covered</br>
 X - Not Covered
 
 ##### def adminAuth(): 1/1
