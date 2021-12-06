@@ -28,7 +28,7 @@ Group Members:
 # Development Workflow
 - All features will branch from dev, and each team member could work on the feature assign to them. 
 - All feature related development is to be done on separate feature branches.
-- Only commits directly to dev allowed, is to miscellaneous files such as README.md, all code changes are to be done in branches.
+- Only changes to miscellaneous files such as README.md are allowed to commit directly to dev branch, all code changes are to be done in respective feature branches.
 
 Update local repo from GitHub remote/online repo
     ```
@@ -37,7 +37,7 @@ Update local repo from GitHub remote/online repo
 
 Create feature branch
     ```
-    git cheeckout -b feature/myfeature dev
+    git checkout -b feature/myfeature dev
     ```
 
 Commit often during development
