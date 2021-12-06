@@ -12194,3 +12194,32 @@ textarea.form-control-lg {
   width: 4rem;
   font-size: 2rem;
 }
+
+.level-img{
+  padding-top: 20px;
+  max-width: 75%;
+  height: auto;
+}
+
+
+.play-btn{
+  margin:auto;
+  display:block;
+}
+
+.selected_level{
+  display: none !important;
+}
+
+label {
+  cursor: pointer;   
+}
+
+input[type=radio]:checked + label>img {
+  border: 1px solid #fff;
+  box-shadow: 0 0 3px 3px #86b7fe;
+}
+
+#instruction_img{
+  padding-bottom: 2rem;
+}
