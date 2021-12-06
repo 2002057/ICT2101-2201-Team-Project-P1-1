@@ -73,7 +73,8 @@ When feature is complete, send a pull request to dev and merge accordingly. Plea
 
 
 # Whitebox Testing
-For whitebox testing, we wrote tests for def adminAuth() and def receivedata(). These two functions are used for authentication and challenge saving respectively. tests can be found in /tests.
+For whitebox testing, we wrote tests for def adminAuth() and def receivedata(). These two functions are used for authentication and challenge saving respectively. tests can be found in /tests.</br>
+In order for test to run, the application iself must also be running as instructed in "Getting Started"</br>
 While in the /tests directory, run 
     ```
     python -m pytest
