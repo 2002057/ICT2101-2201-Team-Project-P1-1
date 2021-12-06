@@ -32,7 +32,7 @@ Group Members:
 
 Update local repo from GitHub remote/online repo
     ```
-    pip install -r requirements.txt
+    git pull origin
     ```
 
 Create feature branch
