@@ -79,6 +79,9 @@ While in the /tests directory, run
     ```
     python -m pytest tests.py
     ```
+
+![Alt Text](https://i.imgur.com/0yaLyoR.gif)
+
 ### Statement coverage 
 
 O - Covered</br>
